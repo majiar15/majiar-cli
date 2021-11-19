@@ -1,0 +1,26 @@
+{
+  "name": "majiar-cli",
+  "version": "1.0.0",
+  "description": "cli realizado con node js para crear estructura de proyectos de express js, controladores y rutas",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/majiar15/majiar-cli.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/majiar15/majiar-cli/issues"
+  },
+  "homepage": "https://github.com/majiar15/majiar-cli#readme",
+  "dependencies": {
+    "inquirer": "^8.2.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
