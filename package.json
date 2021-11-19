@@ -4,8 +4,9 @@
   "description": "cli realizado con node js para crear estructura de proyectos de express js, controladores y rutas",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js"
+    "start": "node ./build/ndex.js",
+    "dev": "nodemon ./build/index.js",
+    "ts": "tsc -w"
   },
   "repository": {
     "type": "git",
