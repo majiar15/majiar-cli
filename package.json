@@ -22,9 +22,11 @@
   },
   "homepage": "https://github.com/majiar15/majiar-cli#readme",
   "dependencies": {
+    "figlet": "^1.5.2",
     "yargs": "^17.2.1"
   },
   "devDependencies": {
+    "@types/figlet": "^1.5.4",
     "@types/node": "^16.11.9",
     "@types/yargs": "^17.0.7",
     "nodemon": "^2.0.15"
