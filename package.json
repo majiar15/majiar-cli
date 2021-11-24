@@ -23,6 +23,7 @@
   "homepage": "https://github.com/majiar15/majiar-cli#readme",
   "dependencies": {
     "chalk": "^4.1.2",
+    "child_process": "^1.0.2",
     "figlet": "^1.5.2",
     "yargs": "^17.2.1"
   },

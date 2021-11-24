@@ -2,7 +2,7 @@
 import yargs from "yargs";
 import figlet from "figlet";
 import chalk from "chalk";
-import { createController, createRoute, createModel } from "./utils";
+import { createController, createRoute, createModel,createProject } from "./utils";
 yargs
   .command(["g", '$0'], "Generate", function (yargs) {
     return yargs
@@ -82,6 +82,17 @@ if ((yargs.argv.c || yargs.argv.generateController) && yargs.argv._[0] === 'g') 
     // @ts-ignore
     if (yargs.argv.ts) {
 
+    }else{
+        let name: string = '';
+        // @ts-ignore
+        yargs.argv._.forEach((element,i) => {
+            if(i != 0 && i != 1){
+                name += element.charAt(0).toUpperCase() + element.slice(1);
+            }else if (i != 0){
+                name += element;
+            }
+        });
+        createProject(name, false);
     }
     console.log(yargs.argv);
 } else {

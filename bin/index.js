@@ -85,6 +85,19 @@ else if (yargs_1.default.argv._[0] == "new-project") {
     // @ts-ignore
     if (yargs_1.default.argv.ts) {
     }
+    else {
+        let name = '';
+        // @ts-ignore
+        yargs_1.default.argv._.forEach((element, i) => {
+            if (i != 0 && i != 1) {
+                name += element.charAt(0).toUpperCase() + element.slice(1);
+            }
+            else if (i != 0) {
+                name += element;
+            }
+        });
+        utils_1.createProject(name, false);
+    }
     console.log(yargs_1.default.argv);
 }
 else {
