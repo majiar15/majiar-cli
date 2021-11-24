@@ -356,6 +356,22 @@ function contentNewProject(name, type = false) {
                     throw err;
             });
         }
+        // add scripts package.json
+        let rawdata = fs_1.default.readFileSync(`./${name}/package.json`);
+        // @ts-ignore
+        let packagejson = JSON.parse(rawdata);
+        packagejson.main = "server.ts";
+        packagejson.scripts = {
+            "ts": "tsc -w",
+            "dev": "nodemon ./build/server.js",
+            "start": "node ./build/server.js"
+        };
+        fs_1.default.writeFile(`./${name}/package.json`, JSON.stringify(packagejson, null, 2), (error) => {
+            if (error) {
+                console.log('An error has occurred ', error);
+                return;
+            }
+        });
         // add tsconfig.json
         if (!fs_1.default.existsSync(`./${name}/tsconfig.json`)) {
             fs_1.default.appendFile(`./${name}/tsconfig.json`, contentTsConfig(), function (err) {
@@ -423,6 +439,21 @@ function contentNewProject(name, type = false) {
                     throw err;
             });
         }
+        // add scripts to package.json
+        let rawdata = fs_1.default.readFileSync(`./${name}/package.json`);
+        // @ts-ignore
+        let packagejson = JSON.parse(rawdata);
+        packagejson.main = "server.js";
+        packagejson.scripts = {
+            "dev": "nodemon ./server.js",
+            "start": "node ./server.js"
+        };
+        fs_1.default.writeFile(`./${name}/package.json`, JSON.stringify(packagejson, null, 2), (error) => {
+            if (error) {
+                console.log('An error has occurred ', error);
+                return;
+            }
+        });
         console.log(chalk_1.default.greenBright('cargando dependencias...'));
         // add dependecis
         child_process_1.exec(`cd ./${name} && npm install express cors mongoose dotenv && npm install nodemon --save-dev`, (error, stdout, stderr) => {
