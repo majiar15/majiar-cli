@@ -2,6 +2,7 @@
 import yargs from 'yargs';
 import {hideBin}from 'yargs/helpers'; 
 import figlet from 'figlet'; 
+import chalk from 'chalk';
 import {createController, createRoute, createModel} from './utils';
 
 const usage = "\nAyuda: Majiar-cli ofrece las siguientes funciones";const options = yargs  
@@ -17,19 +18,40 @@ const argv = yargs(hideBin(process.argv)).argv
 //@ts-ignore            
 if(yargs.argv.gc || yargs.argv.generateController ){
     // @ts-ignore
-createController(yargs.argv.gc || yargs.argv.generateController,false);
+    if(yargs.argv.ts){
+        // @ts-ignore
+        createController(yargs.argv.gc || yargs.argv.generateController,true);
+    }else{
+        // @ts-ignore
+        createController(yargs.argv.gc || yargs.argv.generateController,false);
+    }
 //@ts-ignore            
 }else if(yargs.argv.gr || yargs.argv.generateRoute ){
-//@ts-ignore            
-createRoute(yargs.argv.gr || yargs.argv.generateRoute,false);
+    //@ts-ignore            
+    if(yargs.argv.ts){
+        // @ts-ignore
+        createRoute(yargs.argv.gr || yargs.argv.generateRoute,true);
+    }else{
+        // @ts-ignore
+        createRoute(yargs.argv.gr || yargs.argv.generateRoute,false);
+    }
+
 
 //@ts-ignore
 }else if(yargs.argv.gm || yargs.argv.generateModel  ){
-//@ts-ignore            
-createModel(yargs.argv.gm || yargs.argv.generateModel,false);
+    //@ts-ignore            
+    if(yargs.argv.ts){
+        // @ts-ignore
+        createModel(yargs.argv.gm || yargs.argv.generateModel,true);
+    }else{
+        //@ts-ignore            
+        createModel(yargs.argv.gm || yargs.argv.generateModel,false);
+
+    }
+
 }else{
       figlet.text('Majiar', {
-      
+            font: 'Sub-Zero',
             horizontalLayout: 'default',
             verticalLayout: 'default',
             width: 100,

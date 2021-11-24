@@ -15,24 +15,46 @@ const options = yargs_1.default
     .option("gr", { alias: "generateRoute", describe: "crea un router nuevo", type: "string", demandOption: false })
     .option("gm", { alias: "generateModel", describe: "crea un modelo nuevo", type: "string", demandOption: false })
     .help(true);
-const argv = (0, yargs_1.default)((0, helpers_1.hideBin)(process.argv)).argv;
+const argv = yargs_1.default(helpers_1.hideBin(process.argv)).argv;
 //@ts-ignore            
 if (yargs_1.default.argv.gc || yargs_1.default.argv.generateController) {
     // @ts-ignore
-    (0, utils_1.createController)(yargs_1.default.argv.gc || yargs_1.default.argv.generateController, false);
+    if (yargs_1.default.argv.ts) {
+        // @ts-ignore
+        utils_1.createController(yargs_1.default.argv.gc || yargs_1.default.argv.generateController, true);
+    }
+    else {
+        // @ts-ignore
+        utils_1.createController(yargs_1.default.argv.gc || yargs_1.default.argv.generateController, false);
+    }
     //@ts-ignore            
 }
 else if (yargs_1.default.argv.gr || yargs_1.default.argv.generateRoute) {
     //@ts-ignore            
-    (0, utils_1.createRoute)(yargs_1.default.argv.gr || yargs_1.default.argv.generateRoute, false);
+    if (yargs_1.default.argv.ts) {
+        // @ts-ignore
+        utils_1.createRoute(yargs_1.default.argv.gr || yargs_1.default.argv.generateRoute, true);
+    }
+    else {
+        // @ts-ignore
+        utils_1.createRoute(yargs_1.default.argv.gr || yargs_1.default.argv.generateRoute, false);
+    }
     //@ts-ignore
 }
 else if (yargs_1.default.argv.gm || yargs_1.default.argv.generateModel) {
     //@ts-ignore            
-    (0, utils_1.createModel)(yargs_1.default.argv.gm || yargs_1.default.argv.generateModel, false);
+    if (yargs_1.default.argv.ts) {
+        // @ts-ignore
+        utils_1.createModel(yargs_1.default.argv.gm || yargs_1.default.argv.generateModel, true);
+    }
+    else {
+        //@ts-ignore            
+        utils_1.createModel(yargs_1.default.argv.gm || yargs_1.default.argv.generateModel, false);
+    }
 }
 else {
     figlet_1.default.text('Majiar', {
+        font: 'Sub-Zero',
         horizontalLayout: 'default',
         verticalLayout: 'default',
         width: 100,
