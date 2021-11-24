@@ -1,7 +1,7 @@
 {
   "name": "majiar-cli",
   "version": "1.0.0",
-  "description": "cli realizado con node js para crear estructura de proyectos de express js, controladores y rutas",
+  "description": "cli realizado con node js para crear estructura de proyectos de express js",
   "main": "bin/index.js",
   "scripts": {
     "start": "node ./bin/ndex.js",

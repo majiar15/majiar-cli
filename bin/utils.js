@@ -379,6 +379,13 @@ function contentNewProject(name, type = false) {
                     throw err;
             });
         }
+        // create gitignore
+        if (!fs_1.default.existsSync(`./${name}/.gitignore`)) {
+            fs_1.default.appendFile(`./${name}/.gitignore`, "/node_modules \n/build", function (err) {
+                if (err)
+                    throw err;
+            });
+        }
         console.log(chalk_1.default.greenBright('cargando dependencias...'));
         // add dependecis
         child_process_1.exec(`cd ./${name} && npm install express mongoose cors dotenv && npm install nodemon @types/express @types/cors @types/mongoose --save-dev`, (error, stdout, stderr) => {
@@ -454,6 +461,13 @@ function contentNewProject(name, type = false) {
                 return;
             }
         });
+        // create gitignore
+        if (!fs_1.default.existsSync(`./${name}/.gitignore`)) {
+            fs_1.default.appendFile(`./${name}/.gitignore`, "/node_modules", function (err) {
+                if (err)
+                    throw err;
+            });
+        }
         console.log(chalk_1.default.greenBright('cargando dependencias...'));
         // add dependecis
         child_process_1.exec(`cd ./${name} && npm install express cors mongoose dotenv && npm install nodemon --save-dev`, (error, stdout, stderr) => {
