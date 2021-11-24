@@ -79,11 +79,8 @@ if ((yargs.argv.c || yargs.argv.generateController) && yargs.argv._[0] === 'g') 
 
 // @ts-ignore
 }else if (yargs.argv._[0] == "new-project"){
-    // @ts-ignore
-    if (yargs.argv.ts) {
-
-    }else{
-        let name: string = '';
+    console.log(chalk.yellow('Creando projecto'));
+    let name: string = '';
         // @ts-ignore
         yargs.argv._.forEach((element,i) => {
             if(i != 0 && i != 1){
@@ -92,9 +89,13 @@ if ((yargs.argv.c || yargs.argv.generateController) && yargs.argv._[0] === 'g') 
                 name += element;
             }
         });
+    // @ts-ignore
+    if (yargs.argv.ts) {
+        createProject(name, true);
+    }else{
+        
         createProject(name, false);
     }
-    console.log(yargs.argv);
 } else {
     figlet.text('Majiar', {
         font: 'Sub-Zero',

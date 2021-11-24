@@ -6,6 +6,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const yargs_1 = __importDefault(require("yargs"));
 const figlet_1 = __importDefault(require("figlet"));
+const chalk_1 = __importDefault(require("chalk"));
 const utils_1 = require("./utils");
 yargs_1.default
     .command(["g", '$0'], "Generate", function (yargs) {
@@ -82,23 +83,24 @@ else if ((yargs_1.default.argv.m || yargs_1.default.argv.generateModel) && yargs
     // @ts-ignore
 }
 else if (yargs_1.default.argv._[0] == "new-project") {
+    console.log(chalk_1.default.yellow('Creando projecto'));
+    let name = '';
+    // @ts-ignore
+    yargs_1.default.argv._.forEach((element, i) => {
+        if (i != 0 && i != 1) {
+            name += element.charAt(0).toUpperCase() + element.slice(1);
+        }
+        else if (i != 0) {
+            name += element;
+        }
+    });
     // @ts-ignore
     if (yargs_1.default.argv.ts) {
+        utils_1.createProject(name, true);
     }
     else {
-        let name = '';
-        // @ts-ignore
-        yargs_1.default.argv._.forEach((element, i) => {
-            if (i != 0 && i != 1) {
-                name += element.charAt(0).toUpperCase() + element.slice(1);
-            }
-            else if (i != 0) {
-                name += element;
-            }
-        });
         utils_1.createProject(name, false);
     }
-    console.log(yargs_1.default.argv);
 }
 else {
     figlet_1.default.text('Majiar', {
