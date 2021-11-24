@@ -1,67 +1,102 @@
 #! /usr/bin/env node
-import yargs from 'yargs';
-import {hideBin}from 'yargs/helpers'; 
-import figlet from 'figlet'; 
-import chalk from 'chalk';
-import {createController, createRoute, createModel} from './utils';
+import yargs from "yargs";
+import figlet from "figlet";
+import chalk from "chalk";
+import { createController, createRoute, createModel } from "./utils";
+yargs
+  .command(["g", '$0'], "Generate", function (yargs) {
+    return yargs
+    .option("c", {
+        alias: "generateController",
+        describe: "genera un nuevo controlador",
+        type: "string",
+      })
+      .option("r", {
+        alias: "generateRoute",
+        describe: "crea un router nuevo",
+        type: "string",
+      })
+      .option("m", {
+        alias: "generateModel",
+        describe: "crea un modelo nuevo",
+        type: "string",
+      })
+      .option("ts", {
+        alias: "typescript",
+        describe: "crea los archivos en typescript",
+        
+        type: "boolean",
+      }).help(true).version(false);
+  })
+  .command(["new-project", '$0'], "Crear", function (yargs) {
+    return yargs
+      .option("ts", {
+        alias: "typescript",
+        describe: "crea los archivos en typescript",
+        
+        type: "boolean",
+      }).help(true).version(false);
+  })
+  .help("h")
+  .alias("h", "help").argv;
 
-const usage = "\nAyuda: Majiar-cli ofrece las siguientes funciones";const options = yargs  
-.usage(usage)
-.option("gc", {alias:"generateController", describe: "crea un controlador nuevo", type: "string", demandOption
-: false })
-.option("gr", {alias:"generateRoute", describe: "crea un router nuevo", type: "string", demandOption
-: false })
-.option("gm", {alias:"generateModel", describe: "crea un modelo nuevo", type: "string", demandOption
-: false })                                                                                                    
-.help(true); 
-const argv = yargs(hideBin(process.argv)).argv
-//@ts-ignore            
-if(yargs.argv.gc || yargs.argv.generateController ){
+  //@ts-ignore
+if ((yargs.argv.c || yargs.argv.generateController) && yargs.argv._[0] === 'g') {
+    console.log(1);
+  // @ts-ignore
+  if (yargs.argv.ts) {
     // @ts-ignore
-    if(yargs.argv.ts){
-        // @ts-ignore
-        createController(yargs.argv.gc || yargs.argv.generateController,true);
-    }else{
-        // @ts-ignore
-        createController(yargs.argv.gc || yargs.argv.generateController,false);
+    createController(yargs.argv.c || yargs.argv.generateController, true);
+  } else {
+    // @ts-ignore
+    createController(yargs.argv.c || yargs.argv.generateController, false);
+  }
+  //@ts-ignore
+} else if ((yargs.argv.r || yargs.argv.generateRoute) && yargs.argv._[0] === 'g') {
+    console.log(2);
+
+  //@ts-ignore
+  if (yargs.argv.ts) {
+    // @ts-ignore
+    createRoute(yargs.argv.r || yargs.argv.generateRoute, true);
+  } else {
+    // @ts-ignore
+    createRoute(yargs.argv.r || yargs.argv.generateRoute, false);
+  }
+
+  //@ts-ignore
+} else if ((yargs.argv.m || yargs.argv.generateModel) && yargs.argv._[0] === 'g') {
+    console.log(3);
+
+  //@ts-ignore
+  if (yargs.argv.ts) {
+    // @ts-ignore
+    createModel(yargs.argv.m || yargs.argv.generateModel, true);
+  } else {
+    //@ts-ignore
+    createModel(yargs.argv.m || yargs.argv.generateModel, false);
+  }
+
+// @ts-ignore
+}else if (yargs.argv._[0] == "new-project"){
+    // @ts-ignore
+    if (yargs.argv.ts) {
+
     }
-//@ts-ignore            
-}else if(yargs.argv.gr || yargs.argv.generateRoute ){
-    //@ts-ignore            
-    if(yargs.argv.ts){
-        // @ts-ignore
-        createRoute(yargs.argv.gr || yargs.argv.generateRoute,true);
-    }else{
-        // @ts-ignore
-        createRoute(yargs.argv.gr || yargs.argv.generateRoute,false);
-    }
-
-
-//@ts-ignore
-}else if(yargs.argv.gm || yargs.argv.generateModel  ){
-    //@ts-ignore            
-    if(yargs.argv.ts){
-        // @ts-ignore
-        createModel(yargs.argv.gm || yargs.argv.generateModel,true);
-    }else{
-        //@ts-ignore            
-        createModel(yargs.argv.gm || yargs.argv.generateModel,false);
-
-    }
-
-}else{
-      figlet.text('Majiar', {
-            font: 'Sub-Zero',
-            horizontalLayout: 'default',
-            verticalLayout: 'default',
-            width: 100,
-            whitespaceBreak: true
-        }, function(err, data) {
-            if (err) {
-                console.log('Something went wrong...');
-                console.dir(err);
-                return;
-            }
-            console.log(data);
-        });     
+    console.log(yargs.argv);
+} else {
+    figlet.text('Majiar', {
+        font: 'Sub-Zero',
+        horizontalLayout: 'default',
+        verticalLayout: 'default',
+        width: 100,
+        whitespaceBreak: true
+    }, function(err, data) {
+        if (err) {
+            console.log('Something went wrong...');
+            console.dir(err);
+            return;
+        }
+        console.log(data);
+    });     
 }
