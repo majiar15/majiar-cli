@@ -8,20 +8,20 @@ const fs_1 = __importDefault(require("fs"));
 const child_process_1 = require("child_process");
 const chalk_1 = __importDefault(require("chalk"));
 function createController(name, type) {
-    if (!fs_1.default.existsSync('./controllers')) {
-        fs_1.default.mkdirSync('./controllers');
+    if (!fs_1.default.existsSync("./controllers")) {
+        fs_1.default.mkdirSync("./controllers");
         if (type) {
             fs_1.default.appendFile(`./controllers/${name}Controller.ts`, contentController(name, true), function (err) {
                 if (err)
                     throw err;
-                console.log(chalk_1.default.greenBright('Controlador creado correctamente'));
+                console.log(chalk_1.default.greenBright("Controlador creado correctamente"));
             });
         }
         else {
             fs_1.default.appendFile(`./controllers/${name}Controller.js`, contentController(name), function (err) {
                 if (err)
                     throw err;
-                console.log(chalk_1.default.greenBright('Controlador creado correctamente'));
+                console.log(chalk_1.default.greenBright("Controlador creado correctamente"));
             });
         }
     }
@@ -30,34 +30,34 @@ function createController(name, type) {
             fs_1.default.appendFile(`./controllers/${name}Controller.ts`, contentController(name, true), function (err) {
                 if (err)
                     throw err;
-                console.log(chalk_1.default.greenBright('Controlador creado correctamente'));
+                console.log(chalk_1.default.greenBright("Controlador creado correctamente"));
             });
         }
         else {
             fs_1.default.appendFile(`./controllers/${name}Controller.js`, contentController(name), function (err) {
                 if (err)
                     throw err;
-                console.log(chalk_1.default.greenBright('Controlador creado correctamente'));
+                console.log(chalk_1.default.greenBright("Controlador creado correctamente"));
             });
         }
     }
 }
 exports.createController = createController;
 function createRoute(name, type) {
-    if (!fs_1.default.existsSync('./routes')) {
-        fs_1.default.mkdirSync('./routes');
+    if (!fs_1.default.existsSync("./routes")) {
+        fs_1.default.mkdirSync("./routes");
         if (type) {
             fs_1.default.appendFile(`./routes/${name}.ts`, contentRouter(name, true), function (err) {
                 if (err)
                     throw err;
-                console.log(chalk_1.default.greenBright('Router creado correctamente'));
+                console.log(chalk_1.default.greenBright("Router creado correctamente"));
             });
         }
         else {
             fs_1.default.appendFile(`./routes/${name}.js`, contentRouter(name), function (err) {
                 if (err)
                     throw err;
-                console.log(chalk_1.default.greenBright('Router creado correctamente'));
+                console.log(chalk_1.default.greenBright("Router creado correctamente"));
             });
         }
     }
@@ -66,34 +66,34 @@ function createRoute(name, type) {
             fs_1.default.appendFile(`./routes/${name}.ts`, contentRouter(name, true), function (err) {
                 if (err)
                     throw err;
-                console.log(chalk_1.default.greenBright('Router creado correctamente'));
+                console.log(chalk_1.default.greenBright("Router creado correctamente"));
             });
         }
         else {
             fs_1.default.appendFile(`./routes/${name}.js`, contentRouter(name), function (err) {
                 if (err)
                     throw err;
-                console.log(chalk_1.default.greenBright('Router creado correctamente'));
+                console.log(chalk_1.default.greenBright("Router creado correctamente"));
             });
         }
     }
 }
 exports.createRoute = createRoute;
 function createModel(name, type) {
-    if (!fs_1.default.existsSync('./models')) {
-        fs_1.default.mkdirSync('./models');
+    if (!fs_1.default.existsSync("./models")) {
+        fs_1.default.mkdirSync("./models");
         if (type) {
             fs_1.default.appendFile(`./models/${name}Model.ts`, contentModel(name, true), function (err) {
                 if (err)
                     throw err;
-                console.log(chalk_1.default.greenBright('modelo creado correctamente'));
+                console.log(chalk_1.default.greenBright("modelo creado correctamente"));
             });
         }
         else {
             fs_1.default.appendFile(`./models/${name}Model.js`, contentModel(name), function (err) {
                 if (err)
                     throw err;
-                console.log(chalk_1.default.greenBright('modelo creado correctamente'));
+                console.log(chalk_1.default.greenBright("modelo creado correctamente"));
             });
         }
     }
@@ -102,14 +102,14 @@ function createModel(name, type) {
             fs_1.default.appendFile(`./models/${name}Model.ts`, contentModel(name, true), function (err) {
                 if (err)
                     throw err;
-                console.log(chalk_1.default.greenBright('modelo creado correctamente'));
+                console.log(chalk_1.default.greenBright("modelo creado correctamente"));
             });
         }
         else {
             fs_1.default.appendFile(`./models/${name}Model.js`, contentModel(name), function (err) {
                 if (err)
                     throw err;
-                console.log(chalk_1.default.greenBright('modelo creado correctamente'));
+                console.log(chalk_1.default.greenBright("modelo creado correctamente"));
             });
         }
     }
@@ -148,11 +148,11 @@ function contentModel(name, type = false) {
         return `import { Schema, model, Document } from "mongoose";
 
 const ${name}Schema: Schema = new Schema({
-    
+    name: String,
 });
 
 interface i${name.charAt(0).toUpperCase() + name.slice(1)} extends Document{
-    
+    name: String;
 };
 
 export default model<i${name.charAt(0).toUpperCase() + name.slice(1)}>('${name.charAt(0).toUpperCase() + name.slice(1)}', ${name}Schema);`;
@@ -160,15 +160,14 @@ export default model<i${name.charAt(0).toUpperCase() + name.slice(1)}>('${name.c
     else {
         return `let mongoose = require('mongoose');
 
-    const Schema = mongoose.Schema;
+const Schema = mongoose.Schema;
 
-    // crea tu Schema
-    const ${name}Schema = new Schema({
-            
-    });
+// crea tu Schema
+const ${name}Schema = new Schema({
+    name: String,
+});
 
-    module.exports = mongoose.model('${name.charAt(0).toUpperCase() + name.slice(1)}',${name}Schema);
-        `;
+module.exports = mongoose.model('${name.charAt(0).toUpperCase() + name.slice(1)}',${name}Schema);`;
     }
 }
 function contentController(name, type = false) {
@@ -180,7 +179,9 @@ import ${name}Model from "../models/${name}Model";
 class ${name.charAt(0).toUpperCase() + name.slice(1)}Controller{
 
     constructor(){}
-
+    index(req:Request, res: Response){
+        res.status(200).send("${name}Controller");
+    }
 
 }
 const ${name}Controller:${name.charAt(0).toUpperCase() + name.slice(1)}Controller =  new ${name.charAt(0).toUpperCase() + name.slice(1)}Controller();
@@ -196,22 +197,22 @@ export default ${name}Controller;`;
 }
 function contentServer(type = false) {
     if (!type) {
-        return `require('dotenv').config();
-import express from "express";
+        return `// dependencies
+require('dotenv').config();
+const express = require("express");
+const cors = require("cors");
+const mongoose = require("mongoose");
+// Routers
+const userRouter = require("./routes/user");
+
+// application settings
 const app = express();
-import userRouter from './routes/user';
-import mongoose from "mongoose";
 const mongoDB = process.env.MONGO_URI;
-//configuracion de puerto
 app.set('port', process.env.PORT || 3000);
+
 // configuracion de base de datos
-mongoose.set('useFindAndModify',false);
 mongoose.createConnection
-mongoose.connect(mongoDB || '',{
-    useNewUrlParser: true,
-    useCreateIndex: true,
-    useUnifiedTopology:true
-})
+mongoose.connect(mongoDB)
     .then(db =>{ console.log("db is conected")})
     .catch(error =>{ console.log('error '+error)});
 
@@ -277,7 +278,6 @@ server.start();`;
 function contentRouter(name, type = false) {
     if (type) {
         return `import { Router, Response, Request } from "express";
-
 import ${name}Controller from "../controllers/${name}Controller";
 class ${name.charAt(0).toUpperCase() + name.slice(1)}Router{
     
@@ -288,7 +288,7 @@ class ${name.charAt(0).toUpperCase() + name.slice(1)}Router{
         this.routes();
     }
     routes(){
-        this.router.get('/', ${name}Controller);
+        // this.router.get('/', ${name}Controller);
     }
 }
 const ${name}Router = new ${name.charAt(0).toUpperCase() + name.slice(1)}Router();
@@ -296,12 +296,12 @@ export default ${name}Router.router;`;
     }
     else {
         return `let express = require('express');
-    let router = express.Router();
-    let ${name}Controller = require('../controllers/${name}Controller');
-        
-    router.get('/', ${name}Controller);
-        
-    module.exports = router;
+let router = express.Router();
+let ${name}Controller = require('../controllers/${name}Controller');
+    
+// router.get('/', ${name}Controller);
+    
+module.exports = router;
         `;
     }
 }
@@ -356,19 +356,26 @@ function contentNewProject(name, type = false) {
                     throw err;
             });
         }
+        // CREATE .env
+        if (!fs_1.default.existsSync(`./${name}/.env`)) {
+            fs_1.default.appendFile(`./${name}/.env`, `MONGO_URI=mongodb://localhost:27017/${name}`, function (err) {
+                if (err)
+                    throw err;
+            });
+        }
         // add scripts package.json
         let rawdata = fs_1.default.readFileSync(`./${name}/package.json`);
         // @ts-ignore
         let packagejson = JSON.parse(rawdata);
         packagejson.main = "server.ts";
         packagejson.scripts = {
-            "ts": "tsc -w",
-            "dev": "nodemon ./build/server.js",
-            "start": "node ./build/server.js"
+            ts: "tsc -w",
+            dev: "nodemon ./build/server.js",
+            start: "node ./build/server.js",
         };
         fs_1.default.writeFile(`./${name}/package.json`, JSON.stringify(packagejson, null, 2), (error) => {
             if (error) {
-                console.log('An error has occurred ', error);
+                console.log("An error has occurred ", error);
                 return;
             }
         });
@@ -386,14 +393,14 @@ function contentNewProject(name, type = false) {
                     throw err;
             });
         }
-        console.log(chalk_1.default.greenBright('cargando dependencias...'));
+        console.log(chalk_1.default.greenBright("cargando dependencias..."));
         // add dependecis
         child_process_1.exec(`cd ./${name} && npm install express mongoose cors dotenv && npm install nodemon @types/express @types/cors @types/mongoose --save-dev`, (error, stdout, stderr) => {
             if (error) {
                 console.log(`error: ${error.message}`);
                 return;
             }
-            console.log(chalk_1.default.greenBright('Proyecto creado correctamente'));
+            console.log(chalk_1.default.greenBright("Proyecto creado correctamente"));
         });
     }
     else {
@@ -446,18 +453,25 @@ function contentNewProject(name, type = false) {
                     throw err;
             });
         }
+        // CREATE .env
+        if (!fs_1.default.existsSync(`./${name}/.env`)) {
+            fs_1.default.appendFile(`./${name}/.env`, `MONGO_URI=mongodb://localhost:27017/${name}`, function (err) {
+                if (err)
+                    throw err;
+            });
+        }
         // add scripts to package.json
         let rawdata = fs_1.default.readFileSync(`./${name}/package.json`);
         // @ts-ignore
         let packagejson = JSON.parse(rawdata);
         packagejson.main = "server.js";
         packagejson.scripts = {
-            "dev": "nodemon ./server.js",
-            "start": "node ./server.js"
+            dev: "nodemon ./server.js",
+            start: "node ./server.js",
         };
         fs_1.default.writeFile(`./${name}/package.json`, JSON.stringify(packagejson, null, 2), (error) => {
             if (error) {
-                console.log('An error has occurred ', error);
+                console.log("An error has occurred ", error);
                 return;
             }
         });
@@ -468,14 +482,14 @@ function contentNewProject(name, type = false) {
                     throw err;
             });
         }
-        console.log(chalk_1.default.greenBright('cargando dependencias...'));
+        console.log(chalk_1.default.greenBright("cargando dependencias..."));
         // add dependecis
         child_process_1.exec(`cd ./${name} && npm install express cors mongoose dotenv && npm install nodemon --save-dev`, (error, stdout, stderr) => {
             if (error) {
                 console.log(`error: ${error.message}`);
                 return;
             }
-            console.log(chalk_1.default.greenBright('Proyecto creado correctamente'));
+            console.log(chalk_1.default.greenBright("Proyecto creado correctamente"));
         });
     }
 }

@@ -42,7 +42,6 @@ yargs
 
   //@ts-ignore
 if ((yargs.argv.c || yargs.argv.generateController) && yargs.argv._[0] === 'g') {
-    console.log(1);
   // @ts-ignore
   if (yargs.argv.ts) {
     // @ts-ignore
@@ -53,7 +52,6 @@ if ((yargs.argv.c || yargs.argv.generateController) && yargs.argv._[0] === 'g') 
   }
   //@ts-ignore
 } else if ((yargs.argv.r || yargs.argv.generateRoute) && yargs.argv._[0] === 'g') {
-    console.log(2);
 
   //@ts-ignore
   if (yargs.argv.ts) {
@@ -66,7 +64,7 @@ if ((yargs.argv.c || yargs.argv.generateController) && yargs.argv._[0] === 'g') 
 
   //@ts-ignore
 } else if ((yargs.argv.m || yargs.argv.generateModel) && yargs.argv._[0] === 'g') {
-    console.log(3);
+
 
   //@ts-ignore
   if (yargs.argv.ts) {

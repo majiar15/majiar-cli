@@ -44,7 +44,6 @@ yargs_1.default
     .alias("h", "help").argv;
 //@ts-ignore
 if ((yargs_1.default.argv.c || yargs_1.default.argv.generateController) && yargs_1.default.argv._[0] === 'g') {
-    console.log(1);
     // @ts-ignore
     if (yargs_1.default.argv.ts) {
         // @ts-ignore
@@ -57,7 +56,6 @@ if ((yargs_1.default.argv.c || yargs_1.default.argv.generateController) && yargs
     //@ts-ignore
 }
 else if ((yargs_1.default.argv.r || yargs_1.default.argv.generateRoute) && yargs_1.default.argv._[0] === 'g') {
-    console.log(2);
     //@ts-ignore
     if (yargs_1.default.argv.ts) {
         // @ts-ignore
@@ -70,7 +68,6 @@ else if ((yargs_1.default.argv.r || yargs_1.default.argv.generateRoute) && yargs
     //@ts-ignore
 }
 else if ((yargs_1.default.argv.m || yargs_1.default.argv.generateModel) && yargs_1.default.argv._[0] === 'g') {
-    console.log(3);
     //@ts-ignore
     if (yargs_1.default.argv.ts) {
         // @ts-ignore
