@@ -20,7 +20,7 @@ _esto permitira instalar de manera global Majiar CLI en su equipo y utilizar los
 ```
 majiar new-project <nombre>  
 ```
-![New Project](https://raw.githubusercontent.com/majiar15/majiar-cli/master/images/new-project-ts.png)
+![New Project](https://raw.githubusercontent.com/majiar15/majiar-cli/master/images/new-project.png)
 
 _este comando creara una estructura basica de un proyecto de express js con un controlador, router y modelo de usuario_
 
