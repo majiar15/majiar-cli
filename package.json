@@ -1,6 +1,6 @@
 {
   "name": "majiar-cli",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "cli realizado con node js para crear estructura de proyectos de express js",
   "main": "bin/index.js",
   "scripts": {
