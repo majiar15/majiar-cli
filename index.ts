@@ -77,7 +77,7 @@ if ((yargs.argv.c || yargs.argv.generateController) && yargs.argv._[0] === 'g') 
 
 // @ts-ignore
 }else if (yargs.argv._[0] == "new-project"){
-    console.log(chalk.yellow('Creando projecto'));
+    console.log(chalk.yellow('Creando proyecto'));
     let name: string = '';
         // @ts-ignore
         yargs.argv._.forEach((element,i) => {
