@@ -4,9 +4,11 @@
   "description": "cli realizado con node js para crear estructura de proyectos de express js",
   "main": "bin/index.js",
   "scripts": {
+    "prepare": "npm run build",
     "start": "node ./bin/ndex.js",
     "dev": "nodemon ./bin/index.js",
-    "ts": "tsc -w"
+    "ts": "tsc -w",
+    "build": "tsc"
   },
   "bin": {
     "majiar": "./bin/index.js"

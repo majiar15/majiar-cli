@@ -1,4 +1,4 @@
-#! /usr/bin/env node
+#!/usr/bin/env node
 import yargs from "yargs";
 import figlet from "figlet";
 import chalk from "chalk";

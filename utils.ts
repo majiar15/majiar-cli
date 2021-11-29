@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 import fs from "fs";
 import { exec } from "child_process";
 import chalk from "chalk";
@@ -434,7 +435,7 @@ function contentNewProject(name: string, type: boolean = false) {
     if (!fs.existsSync(`./${name}/.gitignore`)) {
       fs.appendFile(
         `./${name}/.gitignore`,
-        "/node_modules \n/build",
+        "/node_modules \n/build \n.env",
         function (err) {
           if (err) throw err;
         }
@@ -548,7 +549,7 @@ function contentNewProject(name: string, type: boolean = false) {
     );
     // create gitignore
     if (!fs.existsSync(`./${name}/.gitignore`)) {
-      fs.appendFile(`./${name}/.gitignore`, "/node_modules", function (err) {
+      fs.appendFile(`./${name}/.gitignore`, "/node_modules \n.env", function (err) {
         if (err) throw err;
       });
     }
