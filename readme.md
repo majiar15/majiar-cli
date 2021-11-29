@@ -20,18 +20,18 @@ _esto permitira instalar de manera global Majiar CLI en su equipo y utilizar los
 ```
 majiar new-project <nombre>  
 ```
-![New Project](./images/new-project-ts.png)
+![New Project](https://raw.githubusercontent.com/majiar15/majiar-cli/master/images/new-project-ts.png)
 
 _este comando creara una estructura basica de un proyecto de express js con un controlador, router y modelo de usuario_
 
-![New Project Javascript](./images/javascript.png)
+![New Project Javascript](https://raw.githubusercontent.com/majiar15/majiar-cli/master/images/javascript.png)
 ## generando un projecto de express js usando typescript
 ```
 majiar new-project <nombre> --ts
 ```
 _este comando creara una estructura basica de un proyecto de express js utilizando Typescript con un controlador, router y modelo de usuario_
 
-![New Project Javascript](./images/typescript.png)
+![New Project Javascript](https://raw.githubusercontent.com/majiar15/majiar-cli/master/images/javascript.png)
 
 ## generando controlador
 ```
